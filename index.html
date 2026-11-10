@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sprite Sanctuary: a pixel pet on your desktop that shows, by its mood, whether you're doing what you planned. Free for Windows.">
+  <title>Sprite Sanctuary</title>
+  <style>
+    :root { color-scheme: light; --bg: #f6f7f4; --fg: #1d2420; --muted: #526057; --card: #ffffff; --line: #dde2da; --accent: #2f7f45; --accent-fg: #ffffff; --note: #fff7e0; --note-line: #ecd89a; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { color-scheme: dark; --bg: #16181d; --fg: #e8ebe6; --muted: #aab5ad; --card: #20242b; --line: #343a42; --accent: #7bd58e; --accent-fg: #10140f; --note: #2a2618; --note-line: #574c25; }
+    }
+    :root[data-theme="dark"] { color-scheme: dark; --bg: #16181d; --fg: #e8ebe6; --muted: #aab5ad; --card: #20242b; --line: #343a42; --accent: #7bd58e; --accent-fg: #10140f; --note: #2a2618; --note-line: #574c25; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 48px 16px 72px; }
+    img.px { image-rendering: pixelated; image-rendering: crisp-edges; }
+    .hero { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+    .hero img { width: 150px; height: auto; }
+    .hero div { flex: 1 1 280px; }
+    h1 { font-size: 2.4rem; line-height: 1.1; margin: 0 0 10px; }
+    h2 { font-size: 1.3rem; margin: 40px 0 12px; }
+    .lede { font-size: 1.15rem; color: var(--muted); margin: 0; }
+    .download { margin: 28px 0 8px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .button { display: inline-block; background: var(--accent); color: var(--accent-fg); text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 10px; }
+    .button:hover { filter: brightness(1.08); }
+    .small { color: var(--muted); font-size: 0.92rem; }
+    .note { background: var(--note); border: 1px solid var(--note-line); border-radius: 10px; padding: 14px 18px; margin: 20px 0; }
+    .note p { margin: 0 0 6px; }
+    .note ol { margin: 0; padding-left: 1.3em; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .tile { flex: 1 1 120px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 10px 10px; text-align: center; }
+    .tile .art { height: 84px; display: flex; align-items: flex-end; justify-content: center; }
+    .tile .art img { max-height: 84px; max-width: 100%; }
+    .tile .slime { width: 88px; }
+    .tile strong { display: block; margin-top: 8px; }
+    .tile span { color: var(--muted); font-size: 0.88rem; }
+    ul { padding-left: 1.3em; }
+    li { margin: 6px 0; }
+    a { color: var(--accent); }
+    footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+    footer a { margin-right: 18px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <img class="px" src="logo.png" width="220" height="232" alt="The chimera pet: a lion, a goat and a snake in pixel art">
+      <div>
+        <h1>Sprite Sanctuary</h1>
+        <p class="lede">A pixel pet that lives on your desktop and shows, by its mood alone, whether you're doing what you planned right now.</p>
+      </div>
+    </div>
+
+    <div class="download">
+      <a class="button" href="https://github.com/Quadeatschool/sprite-sanctuary/releases/latest">Download for Windows</a>
+      <span class="small">Free · Windows 10 or 11 (64-bit) · Early test version</span>
+    </div>
+
+    <div class="note">
+      <p><strong>Windows will warn you the first time.</strong> The installer isn't signed yet, so you'll see "Windows protected your PC". To install anyway:</p>
+      <ol>
+        <li>Click <strong>More info</strong>.</li>
+        <li>Click <strong>Run anyway</strong>.</li>
+      </ol>
+    </div>
+
+    <h2>Its mood is the whole message</h2>
+    <p>The pet never talks and never blocks anything. Stay on your plan and it's happy. Drift and it slowly gets concerned, then sad, upset and angry. Get back to work and it cheers up.</p>
+    <div class="row">
+      <div class="tile"><div class="art"><img class="px slime" src="img/slime-happy.png" width="66" height="42" alt="Happy slime"></div><strong>Happy</strong><span>On task</span></div>
+      <div class="tile"><div class="art"><img class="px slime" src="img/slime-sad.png" width="72" height="36" alt="Sad slime"></div><strong>Sad</strong><span>5 min off task</span></div>
+      <div class="tile"><div class="art"><img class="px slime" src="img/slime-upset.png" width="66" height="42" alt="Upset slime"></div><strong>Upset</strong><span>10 min off task</span></div>
+      <div class="tile"><div class="art"><img class="px slime" src="img/slime-angry.png" width="66" height="42" alt="Angry slime"></div><strong>Angry</strong><span>15 min off task</span></div>
+    </div>
+
+    <h2>Pick your pet</h2>
+    <div class="row">
+      <div class="tile"><div class="art"><img class="px slime" src="img/slime.png" width="66" height="42" alt="Slime"></div><strong>Slime</strong></div>
+      <div class="tile"><div class="art"><img class="px" src="logo.png" width="220" height="232" alt="Chimera"></div><strong>Chimera</strong></div>
+      <div class="tile"><div class="art"><img class="px" src="img/hooded.png" width="165" height="204" alt="Hooded"></div><strong>Hooded</strong></div>
+      <div class="tile"><div class="art"><img class="px" src="img/manatee.png" width="177" height="117" alt="Manatee"></div><strong>Manatee</strong></div>
+    </div>
+
+    <h2>How it works</h2>
+    <ul>
+      <li>Plan your day in the built-in calendar, by hand or by asking your own Claude or ChatGPT account. You can also import events from Google Calendar (read-only).</li>
+      <li>During a block, it checks about once a minute whether the app or browser tab in front of you fits the task.</li>
+      <li>The optional browser extension for Chrome and Brave tells it which tab is open.</li>
+      <li>It never reports to anyone. What it keeps stays on your PC.</li>
+    </ul>
+
+    <footer>
+      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="https://github.com/Quadeatschool/sprite-sanctuary/issues">Report a problem</a>
+      <p>This site is static and uses no scripts, analytics or tracking.</p>
+    </footer>
+  </main>
+</body>
+</html>

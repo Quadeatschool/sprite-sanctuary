@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="What Sprite Sanctuary, its browser extension and the services it connects to see, keep and send.">
+  <title>Sprite Sanctuary Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f4; --fg: #1d2420; --muted: #526057; --card: #ffffff; --line: #dde2da;
+      --accent: #2f7f45; --todo-bg: #fff6db; --todo-line: #c99400; --todo-fg: #5a4300;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #16181d; --fg: #e8ebe6; --muted: #aab5ad; --card: #20242b; --line: #343a42;
+        --accent: #7bd58e; --todo-bg: #2e2712; --todo-line: #d8a72a; --todo-fg: #f3dc9c;
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #16181d; --fg: #e8ebe6; --muted: #aab5ad; --card: #20242b; --line: #343a42;
+      --accent: #7bd58e; --todo-bg: #2e2712; --todo-line: #d8a72a; --todo-fg: #f3dc9c;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-wrap: break-word; }
+    main { max-width: 760px; margin: 0 auto; padding: 40px 16px 72px; }
+    h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 8px; }
+    h2 { font-size: 1.35rem; line-height: 1.25; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+    h3 { font-size: 1.05rem; margin: 22px 0 4px; }
+    p, ul { margin: 8px 0; }
+    ul { padding-left: 1.3em; }
+    li { margin: 4px 0; }
+    a { color: var(--accent); }
+    code { font: 0.9em ui-monospace, "Cascadia Mono", Consolas, monospace; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+    .updated { color: var(--muted); margin-bottom: 24px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin: 14px 0; }
+    .card > :first-child { margin-top: 0; }
+    .card > :last-child { margin-bottom: 0; }
+    .toc ol { margin: 6px 0 0; padding-left: 1.3em; columns: 2 220px; }
+    .perm { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 10px 0; }
+    .perm dt { font-weight: 600; }
+    .perm dd { margin: 0; }
+    @media (max-width: 520px) {
+      h1 { font-size: 1.65rem; }
+      .perm { grid-template-columns: 1fr; gap: 0; }
+      .perm dd { margin-bottom: 10px; }
+    }
+    .todo { background: var(--todo-bg); border-left: 4px solid var(--todo-line); color: var(--todo-fg); border-radius: 6px; padding: 10px 14px; margin: 12px 0; font-size: 0.95rem; }
+    .todo strong:first-child { letter-spacing: 0.02em; }
+    .muted { color: var(--muted); }
+    footer { margin-top: 48px; color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="./">Sprite Sanctuary</a></p>
+    <h1>Sprite Sanctuary Privacy Policy</h1>
+    <p class="updated"><strong>Last updated:</strong> November 2, 2026</p>
+
+    <p>Sprite Sanctuary is a Windows desktop app: a pixel slime on your desktop that shows, by its mood, whether you are doing what you planned for right now. It has an optional companion extension for Chrome and Brave, "Focus Pet Bridge". This policy covers the app and the extension. It describes how the current version actually behaves.</p>
+
+    <div class="todo"><strong>OWNER TODO:</strong> Name who operates Sprite Sanctuary (a person or a company) so that "we" in this policy refers to someone specific.</div>
+
+    <div class="card">
+      <p><strong>In short</strong></p>
+      <ul>
+        <li>Sprite Sanctuary works for you only. It does not report to an employer, a school or anyone else.</li>
+        <li>It looks at which app, window title and browser tab is in front <strong>about once a minute, and only during an on-screen block you planned</strong>. During screen-free blocks it checks only whether the keyboard or mouse was used. During free time and unplanned time it reads no windows.</li>
+        <li>Sprite Sanctuary does not take screenshots, record the screen, or record what you type into other apps.</li>
+        <li>Your plan, activity log and pet data stay in a file on your PC. There is no Sprite Sanctuary cloud database for them.</li>
+        <li>To judge a window, its title and address go to <strong>the AI account you link</strong> (Claude or ChatGPT), if you link one.</li>
+        <li>Your account (email and password) goes through Supabase Auth. Google Calendar access is optional and read-only.</li>
+        <li>No ads, no analytics, no usage statistics, and your data is never sold.</li>
+      </ul>
+    </div>
+
+    <nav class="card toc" aria-label="Contents">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#observed">What Sprite Sanctuary observes</a></li>
+        <li><a href="#local">What stays on your PC</a></li>
+        <li><a href="#claude">Your linked AI account</a></li>
+        <li><a href="#account">Your Sprite Sanctuary account (Supabase Auth)</a></li>
+        <li><a href="#google">Google Calendar</a></li>
+        <li><a href="#extension">The browser extension</a></li>
+        <li><a href="#retention">How long data is kept</a></li>
+        <li><a href="#control">Viewing, exporting and deleting your data</a></li>
+        <li><a href="#sharing">What we never do</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Changes and contact</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="observed">1. What Sprite Sanctuary observes</h2>
+    <p>You plan your day in Sprite Sanctuary's calendar. Each block of time is one of three kinds, and what Sprite Sanctuary looks at depends on the kind:</p>
+    <ul>
+      <li><strong>On-screen block</strong> (a task, or an imported calendar event that you haven't marked otherwise): about once a minute, Sprite Sanctuary reads the <strong>name of the app in front</strong> (its program name, such as <code>chrome.exe</code>), the <strong>window title</strong>, and, if the app is Chrome or Brave and the extension is installed, the <strong>active tab's address</strong>. It uses these to decide whether you are on task.</li>
+      <li><strong>Screen-free block</strong> (for example, reading a book): Sprite Sanctuary reads no windows. Every few seconds it checks only whether the keyboard or mouse has been used recently, using Windows' "last input" time. It never sees which keys you pressed or what you typed.</li>
+      <li><strong>Free time, and time with nothing planned:</strong> Sprite Sanctuary reads no windows. It still checks whether the keyboard or mouse is in use, so the slime can get "curious" and nudge you to plan something.</li>
+    </ul>
+    <p>Sprite Sanctuary does not take screenshots, record the screen, read page contents, or read incognito or private tabs. Keyboard and mouse use is not counted while a Sprite Sanctuary window is in front, and while the PC is locked or asleep nothing is checked.</p>
+    <p>Sprite Sanctuary also keeps what you enter yourself: tasks, goals, time blocks, what you type into the AI box, things you ask it to remember, and your answers to the slime's questions (such as "Did you finish?" or "Is this part of my task?").</p>
+    <p>If you import a calendar using a private iCal link instead of signing in with Google, Sprite Sanctuary reads your clipboard while it waits for you to copy that link (for up to 10 minutes). It uses the clipboard only if it holds a Google Calendar iCal address.</p>
+
+    <h2 id="local">2. What stays on your PC</h2>
+    <p>Everything Sprite Sanctuary keeps is stored in one file in your Windows user profile (under <code>%APPDATA%</code>). That includes your tasks, goals, blocks, imported calendar events, the activity log (each minute's on-task check: time, task, app name, window title, address and verdict), the AI box's messages for the current day, saved memories, your slime's name and growth, and settings.</p>
+    <p>Sign-in tokens (your Sprite Sanctuary session and your Google connection) and a private iCal link, if you use one, are encrypted with Windows' protected storage before they are saved. Everything else in the file is plain, unencrypted JSON, protected only by your Windows account. If Windows' protected storage isn't available, these tokens are saved unencrypted too.</p>
+    <p>None of this is uploaded to a Sprite Sanctuary server. Section 3 lists the only things that leave your PC.</p>
+
+    <h2 id="claude">3. Your linked AI account</h2>
+    <p>Sprite Sanctuary has no AI of its own. You can link one AI at a time. If you choose <strong>Link Claude</strong>, Sprite Sanctuary runs Anthropic's <strong>Claude Code</strong> on your PC, which you sign in to yourself. Sprite Sanctuary never sees or stores your Claude credentials. If you choose <strong>Continue with ChatGPT</strong>, you sign in with OpenAI in your browser and Sprite Sanctuary sends requests to OpenAI using your ChatGPT plan. Sprite Sanctuary never sees your OpenAI password. It keeps the sign-in tokens OpenAI gives it, encrypted with Windows' protected storage, and sends them only to OpenAI. The following is sent to the AI you link, through your own account:</p>
+    <ul>
+      <li><strong>To judge a window</strong> during an on-screen block: the task's title and notes, the app's program name, the window title, and the tab's address. Sprite Sanctuary first checks your own allowed and blocked lists and the answers it has seen before, and asks the AI only when none of those decide it.</li>
+      <li><strong>When you use the AI box:</strong> your message and a short summary of the moment (the date and time, what's planned, why the slime feels the way it does, the window in front, questions waiting for you, and recent messages). The AI can also look up and change your plan through Sprite Sanctuary's own tools: tasks, goals, time blocks, imported calendar events, a summary of the activity log (minutes on and off task, and the sites that pulled you away) and saved memories. Whatever it looks up is sent to that AI.</li>
+    </ul>
+    <p>Either AI has access to Sprite Sanctuary's tools only. Anthropic handles this data under your agreement with Anthropic and <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a>, not this one. OpenAI handles it under your agreement with OpenAI and <a href="https://openai.com/policies/privacy-policy/">OpenAI's privacy policy</a>, not this one. If you don't link an AI, nothing is sent to one: windows are judged only by your allowed and blocked lists, and the AI box is off.</p>
+
+    <h2 id="account">4. Your Sprite Sanctuary account (Supabase Auth)</h2>
+    <p>You need an account to use Sprite Sanctuary. Signing up and signing in go to <strong>Supabase Auth</strong>, a hosted sign-in service. It receives your email address and password; Supabase stores the password in hashed form, never in plain text. Supabase may send you an email to confirm your address.</p>
+    <p>On your PC, Sprite Sanctuary keeps your email address, your account ID and an encrypted sign-in token. The account is used only to sign in. Your plan, activity log and other app data are not stored with it.</p>
+    <div class="todo"><strong>OWNER TODO:</strong> There is no in-app way to delete the Supabase account itself ("Delete everything" in section 8 clears only the PC). Decide how people ask for that, and give a private contact for it in section 11. Optionally say where the Supabase project is hosted (region).</div>
+
+    <h2 id="google">5. Google Calendar</h2>
+    <p>Connecting Google Calendar is optional. If you choose <strong>Connect Google</strong>, Sprite Sanctuary asks for two read-only permissions:</p>
+    <dl class="perm">
+      <dt><code>calendar.calendarlist.readonly</code></dt>
+      <dd>To list your calendars so you can choose which ones to import.</dd>
+      <dt><code>calendar.events.readonly</code></dt>
+      <dd>To read events (title, start and end time) from the calendars you chose, so they show up as blocks in your Sprite Sanctuary day.</dd>
+    </dl>
+    <p>Sprite Sanctuary never creates, changes or deletes anything in your Google Calendar. Imported events are saved in the local file described in section 2, and the Google sign-in token is encrypted with Windows' protected storage. Like your own tasks, an imported event's title is sent to your linked Claude when a window is judged during that event, and when the AI box looks up your calendar (section 3).</p>
+    <p>You can sign out of Google in Sprite Sanctuary at any time, which also removes the imported events. To revoke access fully, also remove Sprite Sanctuary in your <a href="https://myaccount.google.com/permissions">Google Account's third-party access page</a>.</p>
+    <div class="todo"><strong>OWNER TODO (before Google OAuth verification):</strong> Google requires a statement that use of Google user data follows the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements. Confirm that sending event titles to the user's own Claude account fits that policy, then add the statement here.</div>
+
+    <h2 id="extension">6. The browser extension</h2>
+    <p>"Focus Pet Bridge" is the optional Chrome and Brave extension. It tells the Sprite Sanctuary app on your PC which tab is active. It sends the tab's title and address to the app through the browser's native-messaging connection and to nowhere else; the extension makes no network requests. Before sending an address, it strips everything after the path (query strings and <code>#</code> fragments). For incognito or private windows it reports only that such a window is in front, never its title or address.</p>
+    <p>The extension reports when you switch tabs, when a tab's title or address changes, when the browser gains or loses focus, and about once a minute. The app keeps only the most recent report, in memory. It uses that report only when it checks an on-screen block, and that check is what ends up in the activity log.</p>
+    <p>It asks for three permissions:</p>
+    <dl class="perm">
+      <dt><code>tabs</code></dt>
+      <dd>To read the active tab's title and address.</dd>
+      <dt><code>nativeMessaging</code></dt>
+      <dd>To pass that report to the Sprite Sanctuary app on your PC, which registers itself as the extension's native-messaging host.</dd>
+      <dt><code>alarms</code></dt>
+      <dd>To send a once-a-minute report, so the app knows the extension is still running and the tab in front is still current.</dd>
+    </dl>
+    <p>The extension doesn't request access to page contents or to your browsing history.</p>
+
+    <h2 id="retention">7. How long data is kept</h2>
+    <ul>
+      <li><strong>Activity log:</strong> entries older than 30 days are deleted automatically, and the log never holds more than the latest 5,000 entries.</li>
+      <li><strong>AI box messages:</strong> cleared at the start of each day.</li>
+      <li><strong>Everything else</strong> (tasks, blocks, imported events, memories, slime growth): kept on your PC until you delete it or use "Delete everything".</li>
+      <li><strong>Your account</strong> at Supabase Auth: kept until it is deleted (see the TODO in section 4).</li>
+    </ul>
+    <div class="todo"><strong>OWNER TODO (open question 116):</strong> The 30-day log retention is a placeholder the app uses now, not a decision. Decide the default, and whether people can change it.</div>
+
+    <h2 id="control">8. Viewing, exporting and deleting your data</h2>
+    <p>In Sprite Sanctuary, <strong>Settings → Privacy &amp; your data</strong> has these controls:</p>
+    <ul>
+      <li><strong>What your slime sees</strong> shows the same list of what is collected that you agreed to when you created your account.</li>
+      <li><strong>Export my data</strong> saves everything Sprite Sanctuary keeps to a JSON file of your choosing. Sign-in tokens are never included.</li>
+      <li><strong>Delete everything</strong> erases the local file, including your plan, activity log, AI box messages, memories, slime growth and saved sign-in tokens. Sprite Sanctuary then restarts as new. This cannot be undone.</li>
+    </ul>
+    <p>The "What I noticed" page shows every check in the activity log. Settings also lists each saved memory with a <strong>Forget</strong> button. You can sign out of your account and of Google at any time.</p>
+    <p>Deleting your data in Sprite Sanctuary does not reach other services. To remove everything, also revoke Google access in your Google Account, manage your AI data with Anthropic or OpenAI, and ask for your Sprite Sanctuary account to be deleted (section 4). To remove the extension, use the browser's extensions page.</p>
+    <div class="todo"><strong>OWNER TODO (open question 117):</strong> JSON is a placeholder for export too. Decide which export formats to offer.</div>
+
+    <h2 id="sharing">9. What we never do</h2>
+    <ul>
+      <li>We don't sell or rent personal information.</li>
+      <li>We don't show ads, and we don't use analytics, tracking or usage statistics, in the app, the extension or this website.</li>
+      <li>Sprite Sanctuary has no remote viewing, administrator or reporting features. Nobody but you can see what it observes.</li>
+    </ul>
+    <p>The only services Sprite Sanctuary sends data to are the ones described above: Supabase Auth for your account, Google Calendar if you connect it, and Claude Code or OpenAI through your own account if you link one.</p>
+
+    <h2 id="children">10. Children</h2>
+    <p>Sprite Sanctuary is not directed to children under 13, and we do not knowingly collect personal information from children under 13.</p>
+
+    <h2 id="changes">11. Changes and contact</h2>
+    <p>We will update this policy when Sprite Sanctuary's data flows change, and change the "Last updated" date above.</p>
+    <p>General questions can go to the project's <a href="https://github.com/Quadeatschool/sprite-sanctuary/issues">public issue tracker</a>. Don't post personal details there; it is public.</p>
+    <div class="todo"><strong>OWNER TODO:</strong> Add a private contact (an email address) for privacy and account-deletion requests. The Chrome Web Store and Google's OAuth verification both expect one.</div>
+
+    <footer>This page is a static file with no scripts, analytics, tracking or external assets.</footer>
+  </main>
+</body>
+</html>
