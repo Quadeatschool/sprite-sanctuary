@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sprite Sanctuary: a pixel pet on your desktop that shows, by its mood, whether you're doing what you planned. Free for Windows.">
+  <meta name="description" content="Sprite Sanctuary: a pixel pet on your desktop that shows, by its mood, whether you're doing what you planned. Free for Windows and Mac.">
   <title>Sprite Sanctuary</title>
   <link rel="icon" type="image/png" href="favicon.png?v=3">
   <style>
@@ -23,6 +23,7 @@
     h2 { font-size: 1.3rem; margin: 40px 0 12px; }
     .lede { font-size: 1.15rem; color: var(--muted); margin: 0; }
     .download { margin: 28px 0 8px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .other { margin: 0 0 8px; }
     .button { display: inline-block; background: var(--accent); color: var(--accent-fg); text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 10px; }
     .button:hover { filter: brightness(1.08); }
     .small { color: var(--muted); font-size: 0.92rem; }
@@ -53,18 +54,52 @@
       </div>
     </div>
 
+    <!-- One big button for this computer and a link to the other system. Without the script below, it offers Windows
+         with a link to the Mac, and shows both notes. -->
     <div class="download">
-      <a class="button" href="https://github.com/Quadeatschool/sprite-sanctuary/releases/latest/download/Sprite-Sanctuary-Setup.exe">Download for Windows</a>
-      <span class="small">Free · Windows 10 or 11 (64-bit) · Early test version</span>
+      <a class="button" id="get" href="https://github.com/Quadeatschool/sprite-sanctuary/releases/latest/download/Sprite-Sanctuary-Setup.exe">Download for Windows</a>
+      <span class="small" id="needs">Free · Windows 10 or 11 (64-bit) · Early test version</span>
     </div>
+    <p class="small other" id="other">On a Mac? <a href="https://github.com/Quadeatschool/sprite-sanctuary/releases/latest/download/Sprite-Sanctuary-Mac.pkg">Download for Mac</a> (Apple Silicon and Intel)</p>
+    <p class="small">Already have it? Download and run the new version. It notices the one you have and updates it, keeping your plan, your pet and your settings.</p>
 
-    <div class="note">
+    <div class="note" id="windows-note">
       <p><strong>Windows will warn you the first time.</strong> The installer isn't signed yet, so you'll see "Windows protected your PC". To install anyway:</p>
       <ol>
         <li>Click <strong>More info</strong>.</li>
         <li>Click <strong>Run anyway</strong>.</li>
       </ol>
     </div>
+
+    <div class="note" id="mac-note">
+      <p><strong>On a Mac, macOS stops it the first time.</strong> The installer isn't signed yet, so macOS says it can't check it. To install anyway:</p>
+      <ol>
+        <li>Click <strong>Done</strong> (not Move to Trash).</li>
+        <li>Open <strong>System Settings</strong>, then <strong>Privacy &amp; Security</strong>.</li>
+        <li>Scroll down and click <strong>Open Anyway</strong> next to Sprite-Sanctuary-Mac.pkg, then <strong>Open</strong>.</li>
+      </ol>
+      <p>When it starts, Sprite Sanctuary asks to read window titles, which macOS calls Screen Recording. It never records your screen. Until the app is signed, macOS asks again after each update.</p>
+    </div>
+
+    <script>
+      // Picks the download for this computer. It sends nothing anywhere.
+      (function () {
+        var base = 'https://github.com/Quadeatschool/sprite-sanctuary/releases/latest/download/';
+        var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '';
+        var mac = /mac/i.test(platform) && !(navigator.maxTouchPoints > 1); // an iPad says it's a Mac
+        var get = document.getElementById('get');
+        var other = document.getElementById('other');
+        if (mac) {
+          get.href = base + 'Sprite-Sanctuary-Mac.pkg';
+          get.textContent = 'Download for Mac';
+          document.getElementById('needs').textContent = 'Free · Apple Silicon and Intel Macs · Early test version';
+          other.innerHTML = 'On Windows? <a href="' + base + 'Sprite-Sanctuary-Setup.exe">Download for Windows</a> (Windows 10 or 11, 64-bit)';
+          document.getElementById('windows-note').hidden = true;
+        } else {
+          document.getElementById('mac-note').hidden = true;
+        }
+      })();
+    </script>
 
     <h2>Its mood is the whole message</h2>
     <p>The pet never talks and never blocks anything. Stay on your plan and it's happy. Drift and it slowly gets concerned, then sad, upset and angry. Get back to work and it cheers up.</p>
@@ -85,16 +120,16 @@
 
     <h2>How it works</h2>
     <ul>
-      <li>Plan your day in the built-in calendar, by hand or by asking your own Claude or ChatGPT account. You can also import events from Google Calendar (read-only).</li>
+      <li>Plan your day in the built-in calendar, by hand or by asking its AI: Sprite Sanctuary AI (free while we're testing), or your own Claude or ChatGPT account. You can also import events from Google Calendar (read-only).</li>
       <li>During a block, it checks about once a minute whether the app or browser tab in front of you fits the task.</li>
       <li>The optional browser extension for Chrome and Brave tells it which tab is open.</li>
-      <li>It never reports to anyone. What it keeps stays on your PC.</li>
+      <li>It never reports to anyone. Your plan and your pet sync to your account, so your computers and phone share them; what it sees on your screen stays on your computer.</li>
     </ul>
 
     <footer>
       <a href="privacy-policy.html">Privacy policy</a>
       <a href="https://github.com/Quadeatschool/sprite-sanctuary/issues">Report a problem</a>
-      <p>This site is static and uses no scripts, analytics or tracking.</p>
+      <p>This site uses no analytics or tracking. One small script picks the download for your computer, and it sends nothing.</p>
     </footer>
   </main>
 </body>
